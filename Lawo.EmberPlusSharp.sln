@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lawo.UnitTesting", "Lawo.UnitTesting\Lawo.UnitTesting.csproj", "{018D45FD-BC81-433E-9B90-788D4AE2D31C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lawo.UnitTesting", "Lawo.UnitTesting\Lawo.UnitTesting.csproj", "{018D45FD-BC81-433E-9B90-788D4AE2D31C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawoTest", "LawoTest\LawoTest.csproj", "{60335AC8-4085-4890-AF0C-51D2273772E5}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lawo.EmberPlusSharp", "Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj", "{1BE88B2D-2A49-47C0-9C60-59D662C0821A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lawo", "Lawo\Lawo.csproj", "{47067303-08C7-442D-AEFD-5793595B179F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuget.EmberPlusConsumerLib.NetStandard", "Nuget.EmberPlusConsumerLib.NetStandard\Nuget.EmberPlusConsumerLib.NetStandard.csproj", "{FF061512-7A72-482B-BE37-2F4C73B0D7FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,22 @@ Global
 		{47067303-08C7-442D-AEFD-5793595B179F}.Release|x64.Build.0 = Release|Any CPU
 		{47067303-08C7-442D-AEFD-5793595B179F}.Release|x86.ActiveCfg = Release|Any CPU
 		{47067303-08C7-442D-AEFD-5793595B179F}.Release|x86.Build.0 = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Debug|x86.Build.0 = Debug|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|ARM.Build.0 = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|x64.Build.0 = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF061512-7A72-482B-BE37-2F4C73B0D7FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

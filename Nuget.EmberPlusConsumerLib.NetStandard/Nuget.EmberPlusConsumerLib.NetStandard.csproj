@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>$(AssemblyName)</PackageId>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <ContentTargetFolders>content</ContentTargetFolders>
+
+    <GenerateNuspecDependsOn>MyCustomizePacking</GenerateNuspecDependsOn>
+
+    <Description>C# .NET Standard consumer library for the EmBER+ protocol.</Description>
+
+    <Company>Sveriges Radio AB</Company>
+
+    <Product>SR.EmberPlusConsumerLib.NetStandard</Product>
+
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+
+  <Target Name="MyCustomizePacking" Returns="@(NuGetPackInput);@(_BuildOutputInPackage);@(_TargetPathsToSymbols)">
+    <ItemGroup>
+      <NuGetPackInput Remove="@(BuiltProjectOutputGroupKeyOutput);@(DebugSymbolsProjectOutputGroupOutput)" />
+      <_BuildOutputInPackage Remove="@(BuiltProjectOutputGroupKeyOutput)" />
+      <_TargetPathsToSymbols Remove="@(DebugSymbolsProjectOutputGroupOutput)" />
+
+      <NuGetPackInput Include="@(ReferenceCopyLocalPaths);@(AllItemsFullPathWithTargetPath)" />
+      <_BuildOutputInPackage Include="%(ReferenceCopyLocalPaths.Identity)">
+        <TargetFramework>$(TargetFramework)</TargetFramework>
+      </_BuildOutputInPackage>
+      <_BuildOutputInPackage Include="%(AllItemsFullPathWithTargetPath.Identity)">
+        <TargetFramework>$(TargetFramework)</TargetFramework>
+      </_BuildOutputInPackage>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj" />
+    <ProjectReference Include="..\Lawo\Lawo.csproj" />
+  </ItemGroup>
+
+</Project>
