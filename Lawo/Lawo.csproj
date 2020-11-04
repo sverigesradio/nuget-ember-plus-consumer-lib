@@ -8,6 +8,7 @@
     <Authors />
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>StrongNameKey.snk</AssemblyOriginatorKeyFile>
+    <Configurations>Debug;Release;PackNuGet</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>$(AssemblyName)</PackageId>
+    <PackageId>SR.EmberPlusConsumerLib.NetStandard</PackageId>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <IncludeBuildOutput>true</IncludeBuildOutput>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
@@ -19,6 +19,8 @@
     <Product>SR.EmberPlusConsumerLib.NetStandard</Product>
 
     <Version>0.0.1</Version>
+
+    <Configurations>Debug;Release;PackNuGet</Configurations>
   </PropertyGroup>
 
   <Target Name="MyCustomizePacking" Returns="@(NuGetPackInput);@(_BuildOutputInPackage);@(_TargetPathsToSymbols)">
