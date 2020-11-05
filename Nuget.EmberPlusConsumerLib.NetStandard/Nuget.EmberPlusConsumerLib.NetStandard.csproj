@@ -21,6 +21,10 @@
     <Version>0.0.1</Version>
 
     <Configurations>Debug;Release;PackNuGet</Configurations>
+
+    <RepositoryUrl>https://github.com/sverigesradio/nuget-ember-plus-consumer-lib</RepositoryUrl>
+
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <Target Name="MyCustomizePacking" Returns="@(NuGetPackInput);@(_BuildOutputInPackage);@(_TargetPathsToSymbols)">
