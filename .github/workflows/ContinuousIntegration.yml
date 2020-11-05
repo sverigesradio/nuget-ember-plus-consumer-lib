@@ -2,17 +2,13 @@
 name: ContinuousIntegration Release NuGet
 
 # Controls when the action will run. Triggers the workflow on release
-#on:
-#  push:
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
 on:
   release:
     types: [published]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -33,16 +29,11 @@ jobs:
       run: dotnet pack -c PackNuGet /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/sverigesradio/nuget-ember-plus-consumer-lib/releases/tag/${{ github.event.release.tag_name }}"
       working-directory: ./
 
-    - name: Archive NuGet Package
+    - name: Upload NuGet Package
       uses: actions/upload-artifact@v1
       with:
         name: SR.EmberPlusConsumerLib.NetStandard
         path: ./Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg
 
     - name: Publish Nuget Package
-      #run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.nuget_api_key }} --source https://nuget.pkg.github.com/sverigesradio/index.json --no-symbols true
-      #run: dotnet nuget push ./Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true
       run: dotnet nuget push ./Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true -k ${{secrets.nuget_api_key}} -s https://nuget.pkg.github.com/sverigesradio/index.json
-
-
-  
