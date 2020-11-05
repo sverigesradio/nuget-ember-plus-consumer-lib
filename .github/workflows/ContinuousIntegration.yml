@@ -42,7 +42,7 @@ jobs:
     - name: Publish Nuget Package
       #run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.nuget_api_key }} --source https://nuget.pkg.github.com/sverigesradio/index.json --no-symbols true
       #run: dotnet nuget push ./Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true
-      run: dotnet nuget push ./Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true -k $NUGET_AUTH_TOKEN -s https://nuget.pkg.github.com/sverigesradio/index.json
+      run: dotnet nuget push ./Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true -k ${{secrets.nuget_api_key}} -s https://nuget.pkg.github.com/sverigesradio/index.json
 
 
   
