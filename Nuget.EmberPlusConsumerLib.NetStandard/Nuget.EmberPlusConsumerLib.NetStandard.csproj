@@ -2,30 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!--<DebugType>Embedded</DebugType>-->
+    
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>SR.EmberPlusConsumerLib.NetStandard</PackageId>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <IncludeBuildOutput>true</IncludeBuildOutput>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <ContentTargetFolders>content</ContentTargetFolders>
 
     <GenerateNuspecDependsOn>MyCustomizePacking</GenerateNuspecDependsOn>
-
     <Description>C# .NET Standard consumer library for the EmBER+ protocol.</Description>
-
     <Company>Sveriges Radio AB</Company>
-
     <Product>SR.EmberPlusConsumerLib.NetStandard</Product>
-
     <Version>0.0.1</Version>
-
     <Configurations>Debug;Release;PackNuGet</Configurations>
-
     <RepositoryUrl>https://github.com/sverigesradio/nuget-ember-plus-consumer-lib</RepositoryUrl>
-
     <RepositoryType>git</RepositoryType>
+
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj" />
+    <ProjectReference Include="..\Lawo\Lawo.csproj" />
+  </ItemGroup>
 
   <Target Name="MyCustomizePacking" Returns="@(NuGetPackInput);@(_BuildOutputInPackage);@(_TargetPathsToSymbols)">
     <ItemGroup>
@@ -42,10 +41,5 @@
       </_BuildOutputInPackage>
     </ItemGroup>
   </Target>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj" />
-    <ProjectReference Include="..\Lawo\Lawo.csproj" />
-  </ItemGroup>
 
 </Project>
