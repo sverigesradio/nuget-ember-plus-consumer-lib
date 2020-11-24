@@ -39,7 +39,6 @@ namespace Lawo
         /// </summary>
         /// <typeparam name="TEnum">The enumeration type.</typeparam>
         /// <exception cref="ArgumentException"><typeparamref name="TEnum"/> is not an Enum.</exception>
-        [CLSCompliant(false)]
         public static TEnum ToEnum<TEnum>(ulong value)
             where TEnum : struct
         {
@@ -58,7 +57,6 @@ namespace Lawo
         /// <summary>Returns the integer represented by <paramref name="value"/>.</summary>
         /// <typeparam name="TEnum">The enumeration type.</typeparam>
         /// <exception cref="ArgumentException"><typeparamref name="TEnum"/> is not an Enum.</exception>
-        [CLSCompliant(false)]
         public static ulong ToUInt64<TEnum>(TEnum value)
             where TEnum : struct
         {

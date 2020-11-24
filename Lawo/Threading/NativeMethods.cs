@@ -20,7 +20,6 @@ namespace Lawo.Threading
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Expensive method.")]
         [SuppressMessage("Microsoft.Interoperability", "CA1401:PInvokesShouldNotBeVisible", Justification = "Public access to this method is not a security concern.")]
         [DllImport("Kernel32.dll")]
-        [CLSCompliant(false)]
         public static extern uint GetCurrentThreadId();
     }
 }
