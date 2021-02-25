@@ -214,3 +214,7 @@ ModelManifest.xml
 
 # Generated documentation
 /Lawo.EmberPlusSharpDoc/Documentation
+
+# Mac stuff
+.DS_Store
+src/.DS_Store
