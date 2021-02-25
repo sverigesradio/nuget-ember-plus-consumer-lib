@@ -46,12 +46,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj">
+    <ProjectReference Include="..\EmberLibConsumer.net\Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj">
       <Pack>true</Pack>
       <Private>true</Private>
       <IncludeAssets>true</IncludeAssets>
     </ProjectReference>
-    <ProjectReference Include="..\Lawo\Lawo.csproj">  
+    <ProjectReference Include="..\EmberLibConsumer.net\Lawo\Lawo.csproj">  
       <Pack>true</Pack>
       <Private>true</Private>
       <IncludeAssets>true</IncludeAssets>
