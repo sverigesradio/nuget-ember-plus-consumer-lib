@@ -23,7 +23,7 @@ jobs:
         dotnet-version: 3.1.101
         source-url: https://nuget.pkg.github.com/sverigesradio/index.json
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.nuget_api_key}}
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Create NuGet Package
       run: dotnet pack -c PackNuGet /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/sverigesradio/nuget-ember-plus-consumer-lib/releases/tag/${{ github.event.release.tag_name }}"
@@ -36,4 +36,4 @@ jobs:
         path: ./src/Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg
 
     - name: Publish Nuget Package
-      run: dotnet nuget push ./src/Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true -k ${{secrets.nuget_api_key}} -s https://nuget.pkg.github.com/sverigesradio/index.json
+      run: dotnet nuget push ./src/Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg --skip-duplicate --no-symbols true -k ${{secrets.GITHUB_TOKEN}} -s https://nuget.pkg.github.com/sverigesradio/index.json
