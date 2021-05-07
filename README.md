@@ -5,6 +5,9 @@ A library that gives you the possibility to create an EmBER+ consumer.
 1. Add the NuGet package to your solution
 2. Initiate the EmBER+ consumer
     ```csharp
+
+    AsyncPump.Run(async () =>
+    {
         // Note that the most-derived subtype MyRoot needs to be passed to the generic base class.
         // Represents the root containing dynamic and optional static elements in the object tree accessible through Consumer<TRoot>.Root
         private class MyRoot : DynamicRoot<MyRoot> { }
@@ -26,7 +29,7 @@ A library that gives you the possibility to create an EmBER+ consumer.
         var mute = (IParameter)mixer.Children.First(c => c.Identifier == "Mute");
 
         mute.Value = true;
-
+    });
     ```
 3. Rock on with your creations
 
