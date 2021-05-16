@@ -6,12 +6,12 @@ A library that gives you the possibility to create an EmBER+ consumer.
 2. Initiate the EmBER+ consumer
     ```csharp
 
+    // Note that the most-derived subtype MyRoot needs to be passed to the generic base class.
+    // Represents the root containing dynamic and optional static elements in the object tree accessible through Consumer<TRoot>.Root
+    private class MyRoot : DynamicRoot<MyRoot> { }
+
     AsyncPump.Run(async () =>
     {
-        // Note that the most-derived subtype MyRoot needs to be passed to the generic base class.
-        // Represents the root containing dynamic and optional static elements in the object tree accessible through Consumer<TRoot>.Root
-        private class MyRoot : DynamicRoot<MyRoot> { }
-
         // Create TCP connection
         var tcpClient = new TcpClient();
         await tcpClient.ConnectAsync("localhost", "9001");
