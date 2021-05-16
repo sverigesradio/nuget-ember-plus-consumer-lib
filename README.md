@@ -14,7 +14,7 @@ A library that gives you the possibility to create an EmBER+ consumer.
     {
         // Create TCP connection
         var tcpClient = new TcpClient();
-        await tcpClient.ConnectAsync("localhost", "9001");
+        await tcpClient.ConnectAsync("localhost", 9001);
 
         // Establish S101 protocol
         // S101 provides message packaging, CRC integrity checks and a keep-alive mechanism.
@@ -22,10 +22,11 @@ A library that gives you the possibility to create an EmBER+ consumer.
         var s101Client = new S101Client(tcpClient, stream.ReadAsync, stream.WriteAsync);
 
         // Create consumer
-        var consumer = await Consumer<MyRoot>.CreateAsync(s101Client));
+        var consumer = await Consumer<MyRoot>.CreateAsync(s101Client);
+        await consumer.SendAsync();
 
         // Navigate down tree until IParameter is reached or desired INode
-        var mixer = (INode)root.Children.First(c => c.Identifier == "MixerEmberIdentifier");
+        var mixer = (consumer.Root as INode).Children.First(c => c.Identifier == "MixerEmberIdentifier");
         var mute = (IParameter)mixer.Children.First(c => c.Identifier == "Mute");
 
         mute.Value = true;
