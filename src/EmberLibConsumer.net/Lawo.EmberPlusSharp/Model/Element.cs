@@ -64,8 +64,8 @@ namespace Lawo.EmberPlusSharp.Model
             get { return this.tag; }
             set { this.SetValue(ref this.tag, value); }
         }
-
         /// <inheritdoc/>
+        
         public string GetPath()
         {
             var path = new StringBuilder(64);
@@ -78,6 +78,10 @@ namespace Lawo.EmberPlusSharp.Model
 
             return path.ToString();
         }
+
+        public string IdentifierPath => GetPath();
+
+        public int[] Path => this.numberPath;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
