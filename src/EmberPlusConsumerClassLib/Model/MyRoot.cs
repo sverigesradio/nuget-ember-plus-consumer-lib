@@ -32,6 +32,11 @@ using Lawo.EmberPlusSharp.Model;
 
 namespace EmberPlusConsumerClassLib.Model
 {
+    /// <summary>
+    /// Note that the most-derived subtype MyRoot needs to be passed to the generic base class.
+    /// Represents the root containing dynamic and optional static elements in the object
+    /// tree accessible through Consumer<TRoot>.Root
+    /// </summary>
     public sealed class MyRoot : DynamicRoot<MyRoot>
     {
         // Root for consumer
