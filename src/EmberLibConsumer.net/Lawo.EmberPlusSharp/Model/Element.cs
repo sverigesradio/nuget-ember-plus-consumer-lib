@@ -64,8 +64,8 @@ namespace Lawo.EmberPlusSharp.Model
             get { return this.tag; }
             set { this.SetValue(ref this.tag, value); }
         }
+
         /// <inheritdoc/>
-        
         public string GetPath()
         {
             var path = new StringBuilder(64);
