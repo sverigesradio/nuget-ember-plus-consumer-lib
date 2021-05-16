@@ -67,7 +67,17 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
             }
             return node.Children.OfType<INode>();
         }
-        
+
+        public static async Task<IEnumerable<IParameter>> ChildParameterNodes(this INode node, Consumer<MyRoot> consumer)
+        {
+            if (node.Children.Count == 0)
+            {
+                node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
+                await consumer.SendAsync();
+            }
+            return node.Children.OfType<IParameter>();
+        }
+
         public static async Task<INode> GetChildNode(this INode node, string identifier, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
