@@ -22,9 +22,9 @@ namespace Lawo.Threading
         //[DllImport("Kernel32.dll")]
         //public static extern uint GetCurrentThreadId();
 
-        public static int GetCurrentThreadId()
+        public static uint GetCurrentThreadId()
         {
-            return System.Threading.Thread.CurrentThread.ManagedThreadId;
+            return Convert.ToUInt32(System.Threading.Thread.CurrentThread.ManagedThreadId);
         }
     }
 }
