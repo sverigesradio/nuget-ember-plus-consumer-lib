@@ -8,20 +8,13 @@ namespace Lawo.Threading
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    //using System.Runtime.InteropServices;
 
     /// <summary>Provides access to native methods.</summary>
     /// <threadsafety static="true" instance="false"/>
     public static class NativeMethods
     {
-        /// <summary>Returns the return value of
-        /// <see href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms683183.aspx">GetCurrentThreadId</see>.
-        /// </summary>
-        //[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Expensive method.")]
-        //[SuppressMessage("Microsoft.Interoperability", "CA1401:PInvokesShouldNotBeVisible", Justification = "Public access to this method is not a security concern.")]
-        //[DllImport("Kernel32.dll")]
-        //public static extern uint GetCurrentThreadId();
-
+        /// <summary>Returns an integer that represents a unique identifier for the current managed thread.</summary>
+        [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Expensive method.")]
         public static uint GetCurrentThreadId()
         {
             return Convert.ToUInt32(System.Threading.Thread.CurrentThread.ManagedThreadId);
