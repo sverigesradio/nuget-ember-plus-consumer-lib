@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lawo.EmberPlusSharpTest", "EmberLibConsumer.net\Lawo.EmberPlusSharpTest\Lawo.EmberPlusSharpTest.csproj", "{D93DC0DD-C137-428F-B84B-3F4387124C85}"
 EndProject
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawoTest", "EmberLibConsume
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lawo.GlowAnalyzerProxy.Main", "EmberLibConsumer.net\Lawo.GlowAnalyzerProxy.Main\Lawo.GlowAnalyzerProxy.Main.csproj", "{8273A6F1-CFC5-4A5E-8B2B-089EA6317312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lawo.GlowLogConverter.Main", "EmberLibConsumer.net\Lawo.GlowLogConverter.Main\Lawo.GlowLogConverter.Main.csproj", "{C9E3FDA8-F9A9-48BC-9249-36E86A18D371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lawo.GlowLogConverter.Main", "EmberLibConsumer.net\Lawo.GlowLogConverter.Main\Lawo.GlowLogConverter.Main.csproj", "{C9E3FDA8-F9A9-48BC-9249-36E86A18D371}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Lawo.EmberPlusSharpTestVB", "EmberLibConsumer.net\Lawo.EmberPlusSharpTestVB\Lawo.EmberPlusSharpTestVB.vbproj", "{A81DC2B8-8E3C-442E-B311-A38B22D18DFF}"
 EndProject
