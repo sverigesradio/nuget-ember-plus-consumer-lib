@@ -88,6 +88,13 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
             return node.Children.OfType<INode>().FirstOrDefault(c => c.Identifier == identifier);
         }
 
+        /// <summary>
+        /// Navigate to the node in entered <see cref="path"/>, the path is split by '/'.
+        /// </summary>
+        /// <param name="root">Root node</param>
+        /// <param name="path">Path as string</param>
+        /// <param name="consumer"></param>
+        /// <returns></returns>
         public static async Task<INode> NavigateToNode(this INode root, string path, Consumer<MyRoot> consumer)
         {
             string[] steps = path.Split('/');
