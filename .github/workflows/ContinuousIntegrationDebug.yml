@@ -1,4 +1,3 @@
-
 name: ContinuousIntegration Debug NuGet
 
 on:
