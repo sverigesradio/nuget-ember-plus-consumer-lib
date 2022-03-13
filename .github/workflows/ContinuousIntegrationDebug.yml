@@ -3,8 +3,8 @@ name: ContinuousIntegration Debug NuGet
 
 on:
   push:
-    branches:
-    - '!master'
+    branches-ignore:
+     - master
 
 jobs:
   build:
