@@ -57,6 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
