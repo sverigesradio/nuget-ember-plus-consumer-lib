@@ -13,6 +13,7 @@ namespace Lawo
     /// <summary>Provides cached implementations for some of the <see cref="Enum"/> methods.</summary>
     /// <threadsafety static="true" instance="false"/>
     [SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix", Justification = "We reimplement a part of Enum.")]
+    [CLSCompliant(false)]
     public static class FastEnum
     {
         /// <summary>Provides a fast implementation of a part of the functionality of <see cref="Enum.IsDefined"/>.

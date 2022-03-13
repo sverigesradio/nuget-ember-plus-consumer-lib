@@ -15,6 +15,7 @@ namespace Lawo.Threading
     {
         /// <summary>Returns an integer that represents a unique identifier for the current managed thread.</summary>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Expensive method.")]
+        [CLSCompliant(false)]
         public static uint GetCurrentThreadId()
         {
             return Convert.ToUInt32(System.Threading.Thread.CurrentThread.ManagedThreadId);

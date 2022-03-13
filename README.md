@@ -1,6 +1,7 @@
 # EmBER+ consumer lib
 A library that gives you the possibility to create an EmBER+ consumer.
 
+
 # How to use?
 1. Add the NuGet package to your solution
 2. Initiate the EmBER+ consumer
@@ -55,3 +56,7 @@ There has been some modifications to the source code for .NET Standard adaption.
 
 ## Responsible maintainer
 - [Team Unicorn](mailto:teamunicorn@sr.se)
+
+
+## Build
+![Workflow](https://github.com/sverigesradio/nuget-ember-plus-consumer-lib/workflows/ContinuousIntegration%20Release%20NuGet/badge.svg)
