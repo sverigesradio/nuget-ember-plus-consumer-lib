@@ -56,3 +56,7 @@ There has been some modifications to the source code for .NET Standard adaption.
 
 ## Responsible maintainer
 - [Team Unicorn](mailto:teamunicorn@sr.se)
+
+
+## Build
+![Workflow](https://github.com/sverigesradio/nuget-ember-plus-consumer-lib/workflows/ContinuousIntegration%20Release%20NuGet/badge.svg)
