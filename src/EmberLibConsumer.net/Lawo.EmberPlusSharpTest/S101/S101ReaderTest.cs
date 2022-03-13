@@ -46,7 +46,7 @@ namespace Lawo.EmberPlusSharp.S101
         [TestMethod]
         public void ExceptionTest()
         {
-            //TestStandardExceptionConstructors<S101Exception>();
+            TestStandardExceptionConstructors<S101Exception>();
 
             AsyncPump.Run(
                 async () =>

@@ -23,7 +23,6 @@ namespace Lawo.EmberPlusSharp.Ember
     /// <summary>Tests <see cref="EmberReader"/>.</summary>
     [TestClass]
     public class EmberReaderTest : TestBase
-    public class EmberReaderTest
     {
         /// <summary>Tests with an empty stream.</summary>
         [TestMethod]
@@ -204,7 +203,7 @@ namespace Lawo.EmberPlusSharp.Ember
         [TestMethod]
         public void ExceptionTest()
         {
-            //TestStandardExceptionConstructors<EmberException>();
+            TestStandardExceptionConstructors<EmberException>();
 
             Assert.ThrowsException<ArgumentNullException>(() => new EmberReader(null, 1).Dispose());
             AssertEmberException("Incorrect length at position 3.", 0x60, 0x03, 0x0D, 0x01, 0xFF, 0x00);

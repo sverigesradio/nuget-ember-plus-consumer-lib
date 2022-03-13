@@ -7,11 +7,17 @@
     <Nullable>enable</Nullable>
     <SignAssembly>True</SignAssembly>
     <DelaySign>False</DelaySign>
-    <AssemblyOriginatorKeyFile>StrongNameKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
+    <Description></Description>
+    <Company>Lawo GmbH</Company>
+    <Copyright>Copyright 2012-2020 Lawo GmbH (http://www.lawo.com). Distributed under the Boost Software License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)</Copyright>
+    <Authors />
+    <Configurations>Debug;Release;PackNuGet</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Lawo.EmberPlusSharp\Lawo.EmberPlusSharp.csproj" />
+    <ProjectReference Include="..\Lawo.UnitTesting\Lawo.UnitTesting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +47,447 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\EmberLib.Glow.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CodeAnalysisDictionary.xml">
+      <Link>CodeAnalysisDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_00.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_01.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_00.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_01.ember" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_10.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_11.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_12.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_13.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_14.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_15.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_16.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_17.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_18.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_19.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_02.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_20.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_21.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_22.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_23.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_24.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_25.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_26.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_27.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_28.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_29.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_03.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_30.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_31.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_32.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_33.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_34.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_35.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_36.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_37.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_38.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_39.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_04.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_40.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_41.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_42.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_43.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_05.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_06.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_07.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_08.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\consumer-to-provider_message_09.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_10.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_11.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_12.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_13.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_14.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_15.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_16.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_17.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_18.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_19.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_02.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_20.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_21.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_22.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_23.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_24.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_25.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_26.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_27.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_28.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_29.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_03.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_30.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_31.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_32.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_33.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_34.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_35.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_36.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_37.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_38.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_39.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_04.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_40.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_41.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_42.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_43.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_44.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_45.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_46.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_47.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_48.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_05.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_06.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_07.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_08.ember" />
+    <EmbeddedResource Include="Ember\EmberDataPayloads\provider-to-consumer_message_09.ember" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Request1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MainResponse1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MainRequest2.xml" />
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MainResponse2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\PropertiesResponse1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MainRequest3.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\DuplicateElementResponse1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NoDataValueAvailableReponse1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\StreamEntriesResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\InvalidPathResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NoDataValueAvailableReponse2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\ValueOutOfRangeResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnexpectedValueResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\QualifiedParameterChildResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MissingTypeResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\TypeMismatchResponse1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\TypeMismatchResponse2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ember\EmberDataPayloads\BigPayload.ember" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NoValueResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NullableResponse1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NullableRequest2.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NullableResponse2.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\EndOfContainerResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\EndOfStreamResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\InvalidEmberResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnexpectedOuterIdResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnexpectedNonContextSpecificResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnexpectedInnerNumberResponse1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnexpectedInnerNumberResponse2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MissingEnumerationResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\EntryCountMismatchResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MissingNamedConstantResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\EnumParameterResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\BigTreeRootTemplate.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\BigTreeNodeChildrenTemplate.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="S101\EmberDataPayloads\SkipLog.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="S101\EmberDataPayloads\MissingPayloadLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="S101\EmberDataPayloads\IncomingLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NumberOutOfRangeResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="S101\EmberDataPayloads\VersionLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnsupportedGlowVersionLog1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnsupportedGlowVersionLog2.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnsupportedGlowVersionLog3.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnsupportedGlowVersionLog4.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnexpectedDtdLog.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnsupportedPropertyTypeResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UninterestingParameterResponse.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\InterestingParameterResponse.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UninterestingParameterResponse2.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug1866Log.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug1766Log.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\AccessLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\TriggerLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug1620Log.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\ChangeNotificationLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\SendReceiveWithBrokenConnectionLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\ThrowAfterCreateLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\SlotLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\IncompleteLog1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\IncompleteLog2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\InvalidParameterType.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\FunctionLog.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\UnaryFunctionLog.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\FunctionResultValueMismatchLog1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\FunctionResultValueMismatchLog2.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug1834Log.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\NullaryFunctionLog.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug3345Log.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug4424Log.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\IsOnlineLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\OfflineRequiredElementLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug4463Log.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MainLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug4815Response1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug4815Response2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug4815Response3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug4815Request2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug5201Response1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug5201Response2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug5201Request2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug5201Response3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug5639Log.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\SapphireLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\StreamLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\ChildrenRetrievalPolicyLog1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\ChildrenRetrievalPolicyLog2.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\ChildrenRetrievalPolicyLog3.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\Bug27Log.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\CollectionNodeLog.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MatrixMainLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MatrixMinimalLog.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model\Test\EmberDataPayloads\MatrixInlineLog.xml" />
   </ItemGroup>
 
 </Project>

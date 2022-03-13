@@ -154,8 +154,8 @@ Public Class TutorialTestVB
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of UnboundedSapphireRoot).CreateAsync(client)
-                        For Each source In con.Root.Sapphire.Sources.Children
-                            Console.WriteLine(source.Fader.Position.Value)
+                        For Each Source In con.Root.Sapphire.Sources.Children
+                            Console.WriteLine(Source.Fader.Position.Value)
                         Next
                     End Using
                 End Using
@@ -186,11 +186,11 @@ Public Class TutorialTestVB
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of MixedSapphireRoot).CreateAsync(client)
-                        For Each source In con.Root.Sapphire.Sources.Children
-                            source.Fader.DBValue.Value = -67.0
-                            source.Fader.Position.Value = 128
-                            source.Dsp.Input.LRMode.Value = LRMode.Mono
-                            source.Dsp.Input.Phase.Value = False
+                        For Each Source In con.Root.Sapphire.Sources.Children
+                            Source.Fader.DBValue.Value = -67.0
+                            Source.Fader.Position.Value = 128
+                            Source.Dsp.Input.LRMode.Value = LRMode.Mono
+                            Source.Dsp.Input.Phase.Value = False
                         Next
 
                         Await con.SendAsync()

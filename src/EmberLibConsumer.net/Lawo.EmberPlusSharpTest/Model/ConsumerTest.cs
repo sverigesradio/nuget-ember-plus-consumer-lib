@@ -1071,16 +1071,16 @@ namespace Lawo.EmberPlusSharp.Model
                             Assert.AreEqual("text42", receivers.Children[0].Uri.Value);
                             Assert.AreEqual("text43", receivers.Children[0].Sdp.Value);
                             Assert.AreEqual(0, receivers.Children[0].State.Value);
-                            //state.Value = 2;
-                            //await WaitForChangeAsync(receivers.Children[0].GetProperty(r => r.Sdp), null);
-                            //state.Value = 3;
-                            //await WaitForChangeAsync(receivers.Children[0].GetProperty(r => r.Sdp));
-                            //state.Value = 4;
-                            //await WaitForChangeAsync(receivers.Children.GetProperty(c => c.Count), 0);
-                            //await WaitForChangeAsync(((INode)receivers).Children.GetProperty(c => c.Count), 0);
-                            //state.Value = 5;
-                            //await WaitForChangeAsync(receivers.Children.GetProperty(c => c.Count), 1);
-                            //await WaitForChangeAsync(((INode)receivers).Children.GetProperty(c => c.Count), 1);
+                            state.Value = 2;
+                            await WaitForChangeAsync(receivers.Children[0].GetProperty(r => r.Sdp), null);
+                            state.Value = 3;
+                            await WaitForChangeAsync(receivers.Children[0].GetProperty(r => r.Sdp));
+                            state.Value = 4;
+                            await WaitForChangeAsync(receivers.Children.GetProperty(c => c.Count), 0);
+                            await WaitForChangeAsync(((INode)receivers).Children.GetProperty(c => c.Count), 0);
+                            state.Value = 5;
+                            await WaitForChangeAsync(receivers.Children.GetProperty(c => c.Count), 1);
+                            await WaitForChangeAsync(((INode)receivers).Children.GetProperty(c => c.Count), 1);
                             Assert.AreEqual("text44", receivers.Children[0].Uri.Value);
                             Assert.AreEqual("text45", receivers.Children[0].Sdp.Value);
                             Assert.AreEqual(99, receivers.Children[0].State.Value);
@@ -1173,7 +1173,7 @@ namespace Lawo.EmberPlusSharp.Model
                             () => Consumer<SingleNodeRoot>.CreateAsync(dummy, 10000, ChildrenRetrievalPolicy.All + 1));
                     }
 
-                    //TestStandardExceptionConstructors<ModelException>();
+                    TestStandardExceptionConstructors<ModelException>();
 
                     await AssertThrowInCreateAsync<TimeoutException, SingleNodeRoot>(
                         "IncompleteLog1.xml",
@@ -2366,10 +2366,10 @@ namespace Lawo.EmberPlusSharp.Model
                     failFormat(GetFormat(realValue, isLittleEndian)),
                     0,
                     boolValue.ToString().ToLowerInvariant(),
-                    new SoapHexBinary(failEncoding(intBytes.Concat(enumBytes).ToArray())),
-                    new SoapHexBinary(failEncoding(octetStringValue)),
+                    TestHelper.SoapHexBinary(failEncoding(intBytes.Concat(enumBytes).ToArray())),
+                    TestHelper.SoapHexBinary(failEncoding(octetStringValue)),
                     failType ? "Real" : "Octetstring",
-                    failType ? realValue : new SoapHexBinary(failEncoding(realBytes)),
+                    failType ? realValue : TestHelper.SoapHexBinary(failEncoding(realBytes)),
                     stringValue
                 };
 
