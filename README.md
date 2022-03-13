@@ -52,5 +52,6 @@ Distributed under the Boost Software License, Version 1.0.
 ```
 There has been some modifications to the source code for .NET Standard adaption.
 
+
 ## Responsible maintainer
 - [Team Unicorn](mailto:teamunicorn@sr.se)
