@@ -38,26 +38,46 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
 {
     public static class NodeExtensions
     {
-        public static async Task<IParameter> GetParameter(this INode node, string s, Consumer<MyRoot> consumer)
+        /// <summary>
+        /// Returns the child parameter <see cref="IParameter"/> of parent <paramref name="node"/> with <paramref name="identifier"/>
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="identifier">String path identifier</param>
+        /// <param name="consumer"></param>
+        /// <returns></returns>
+        public static async Task<IParameter> GetParameter(this INode node, string identifier, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
             {
                 node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
                 await consumer.SendAsync();
             }
-            return node.Children.FirstOrDefault(c => c.Identifier == s) as IParameter;
+            return node.Children.FirstOrDefault(c => c.Identifier == identifier) as IParameter;
         }
 
-        public static async Task<IFunction> GetFunction(this INode node, string s, Consumer<MyRoot> consumer)
+        /// <summary>
+        /// Returns the child function <see cref="IFunction"/> of parent <paramref name="node"/> with <paramref name="identifier"/>
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="identifier">String path identifier</param>
+        /// <param name="consumer"></param>
+        /// <returns></returns>
+        public static async Task<IFunction> GetFunction(this INode node, string identifier, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
             {
                 node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
                 await consumer.SendAsync();
             }
-            return node.Children.FirstOrDefault(c => c.Identifier == s) as IFunction;
+            return node.Children.FirstOrDefault(c => c.Identifier == identifier) as IFunction;
         }
 
+        /// <summary>
+        /// Returns all child nodes <see cref="IEnumerable{INode}"/> of parent <paramref name="node"/>
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="consumer"></param>
+        /// <returns></returns>
         public static async Task<IEnumerable<INode>> ChildNodes(this INode node, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
@@ -68,6 +88,12 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
             return node.Children.OfType<INode>();
         }
 
+        /// <summary>
+        /// Returns child parameter <see cref="IParameter"/> nodes of parent <paramref name="node"/>
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="consumer"></param>
+        /// <returns></returns>
         public static async Task<IEnumerable<IParameter>> ChildParameterNodes(this INode node, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
@@ -78,6 +104,13 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
             return node.Children.OfType<IParameter>();
         }
 
+        /// <summary>
+        /// Get child node <see cref="INode"/> of <paramref name="node"/> with path idenfifier <paramref name="string"/>
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="identifier">String path identifier</param>
+        /// <param name="consumer"></param>
+        /// <returns>node <see cref="INode"/></returns>
         public static async Task<INode> GetChildNode(this INode node, string identifier, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
@@ -89,7 +122,7 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         }
 
         /// <summary>
-        /// Navigate to the node in entered <see cref="path"/>, the path is split by '/'.
+        /// Navigate from <paramref name="root"/> node to the <paramref name="path"/> node <see cref="INode"/> , the path is split by '/'.
         /// </summary>
         /// <param name="root">Root node</param>
         /// <param name="path">Path as string</param>
