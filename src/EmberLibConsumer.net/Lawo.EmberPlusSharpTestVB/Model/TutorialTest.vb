@@ -8,6 +8,7 @@
 Imports System
 Imports System.Linq
 Imports System.Net.Sockets
+Imports System.Threading
 Imports System.Threading.Tasks
 Imports Lawo.EmberPlusSharp.Model
 Imports Lawo.EmberPlusSharp.S101
@@ -17,34 +18,34 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports Xunit.Sdk
 #End Region
 
-<TestClass>
-Public Class TutorialTestVB
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub DynamicConnectTest()
+Public NotInheritable Class TutorialTestVB
+
+    Private Sub New()
+    End Sub
+
+    Public Shared Sub DynamicConnectTest()
         Main()
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub DynamicIterateTest()
+    Public Shared Sub DynamicIterateTest()
 #Region "Dynamic Iterate"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of MyRoot).CreateAsync(client)
                         WriteChildren(con.Root, 0)
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub DynamicModifyTest()
+    Public Shared Sub DynamicModifyTest()
 #Region "Dynamic Modify"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of MyRoot).CreateAsync(client)
@@ -70,15 +71,16 @@ Public Class TutorialTestVB
                         Await con.SendAsync()
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
+
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub ConnectionLostTest()
+    Public Shared Sub ConnectionLostTest()
 #Region "Connection Lost"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of MyRoot).CreateAsync(client)
@@ -91,30 +93,30 @@ Public Class TutorialTestVB
                         Console.WriteLine("Exception:{0}{1}", exception, Environment.NewLine)
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub StaticIterateTest()
+    Public Shared Sub StaticIterateTest()
 #Region "Static Iterate"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of SapphireRoot).CreateAsync(client)
                         WriteChildren(con.Root, 0)
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub StaticReactToChangesTest()
+    Public Shared Sub StaticReactToChangesTest()
 #Region "Static React to Changes"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of SapphireRoot).CreateAsync(client)
@@ -125,15 +127,15 @@ Public Class TutorialTestVB
                         Console.WriteLine("A value of the element with the path {0} has been changed.", Await valueChanged.Task)
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub StaticModifyTest()
+    Public Shared Sub StaticModifyTest()
 #Region "Static Modify"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of SapphireRoot).CreateAsync(client)
@@ -143,15 +145,15 @@ Public Class TutorialTestVB
                         Await con.SendAsync()
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub CollectionNodeTest()
+    Public Shared Sub CollectionNodeTest()
 #Region "Collection Node"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of UnboundedSapphireRoot).CreateAsync(client)
@@ -160,30 +162,30 @@ Public Class TutorialTestVB
                         Next
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub MixedIterateTest()
+    Public Shared Sub MixedIterateTest()
 #Region "Mixed Iterate"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of MixedSapphireRoot).CreateAsync(client)
                         WriteChildren(con.Root, 0)
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
-    <TestMethod>
-    <TestCategory("Manual")>
-    Public Sub MixedModifyTest()
+    Public Shared Sub MixedModifyTest()
 #Region "Mixed Modify"
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 Using client = Await ConnectAsync("localhost", 9000)
                     Using con = Await Consumer(Of MixedSapphireRoot).CreateAsync(client)
@@ -197,7 +199,8 @@ Public Class TutorialTestVB
                         Await con.SendAsync()
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
 #End Region
     End Sub
 
@@ -206,7 +209,8 @@ Public Class TutorialTestVB
 #Region "Main Method"
     Private Shared Sub Main()
         ' This is necessary so that we can execute async code in a console application.
-        AsyncPump.Run(
+        Using cancelToken As New CancellationTokenSource()
+            AsyncPump.Run(
             Async Function()
                 ' Establish S101 protocol
                 Using client As S101Client = Await ConnectAsync("localhost", 9000)
@@ -219,7 +223,8 @@ Public Class TutorialTestVB
                         Console.WriteLine(root.Children.Count)
                     End Using
                 End Using
-            End Function)
+            End Function, cancelToken.Token)
+        End Using
     End Sub
 #End Region
 

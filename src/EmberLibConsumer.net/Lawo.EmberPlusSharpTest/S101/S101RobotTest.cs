@@ -24,6 +24,7 @@ namespace Lawo.EmberPlusSharp.S101
         [TestMethod]
         public void SkipTest()
         {
+            var cancelToken = new CancellationTokenSource().Token;
             AsyncPump.Run(() => TestWithRobot<S101Payloads>(
                 async client =>
                 {
@@ -44,13 +45,15 @@ namespace Lawo.EmberPlusSharp.S101
                 null,
                 Types,
                 true,
-                "SkipLog.xml"));
+                "SkipLog.xml"),
+                cancelToken);
         }
 
         /// <summary>Tests <see cref="S101Robot"/> use cases for incoming messages.</summary>
         [TestMethod]
         public void IncomingTest()
         {
+            var cancelToken = new CancellationTokenSource().Token;
             AsyncPump.Run(() => Assert.ThrowsExceptionAsync<S101Exception>(() => TestWithRobot<S101Payloads>(
                 async client =>
                 {
@@ -68,13 +71,15 @@ namespace Lawo.EmberPlusSharp.S101
                 null,
                 Types,
                 false,
-                "IncomingLog.xml")));
+                "IncomingLog.xml")),
+                cancelToken);
         }
 
         /// <summary>Tests what happens when the S101 connection is lost prematurely.</summary>
         [TestMethod]
         public void ConnectionLostTest()
         {
+            var cancelToken = new CancellationTokenSource().Token;
             AsyncPump.Run(() => Assert.ThrowsExceptionAsync<S101Exception>(() => TestWithRobot<S101Payloads>(
                 client =>
                 {
@@ -85,13 +90,15 @@ namespace Lawo.EmberPlusSharp.S101
                 null,
                 Types,
                 false,
-                "IncomingLog.xml")));
+                "IncomingLog.xml")),
+                cancelToken);
         }
 
         /// <summary>Tests <see cref="S101Robot"/> exceptions.</summary>
         [TestMethod]
         public void ExceptionTest()
         {
+            var cancelToken = new CancellationTokenSource().Token;
             AsyncPump.Run(
                 async () =>
                 {
@@ -107,7 +114,8 @@ namespace Lawo.EmberPlusSharp.S101
 
                     await Assert.ThrowsExceptionAsync<XmlException>(() => TestWithRobot<S101Payloads>(
                         client => Task.FromResult(false), null, null, Types, true, "MissingPayloadLog.xml"));
-                });
+                },
+                cancelToken);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
