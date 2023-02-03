@@ -81,10 +81,9 @@ namespace Lawo.Threading.Tasks
                 }
             }
 
-            public sealed override void Post(SendOrPostCallback d, object? state) => this.queue.Add(
-                new KeyValuePair<SendOrPostCallback, object>(d ?? throw new ArgumentNullException(nameof(d)), state ?? ""));
+            public sealed override void Post(SendOrPostCallback d, object state) => this.queue.Add(new KeyValuePair<SendOrPostCallback, object>(d ?? throw new ArgumentNullException(nameof(d)), state ?? ""));
 
-            public sealed override void Send(SendOrPostCallback d, object? state) =>
+            public sealed override void Send(SendOrPostCallback d, object state) =>
                 throw new NotSupportedException("Send is not supported.");
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
