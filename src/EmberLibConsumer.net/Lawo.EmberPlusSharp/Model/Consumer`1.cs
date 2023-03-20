@@ -118,6 +118,10 @@ namespace Lawo.EmberPlusSharp.Model
             return result;
         }
 
+        /// <summary>Occurs when the client has received the full payload of a message with an <see cref="EmberData"/>
+        /// command.</summary>
+        public event EventHandler<MessageReceivedEventArgs> EmberDataReceived;
+
         /// <summary>Occurs when the connection to the provider has been lost.</summary>
         /// <remarks>
         /// <para>This event is raised in the following situations:
@@ -245,6 +249,8 @@ namespace Lawo.EmberPlusSharp.Model
                         await this.RetrieveChildrenAsync();
                     });
             }
+
+            this.EmberDataReceived?.Invoke(this, e);
         }
 
         private void OnConnectionLost(object sender, ConnectionLostEventArgs e) =>
