@@ -279,7 +279,10 @@ namespace Lawo.EmberPlusSharp.Model
         {
             if (!this.autoSendDelayCancellationSource.IsCancellationRequested)
             {
-                this.autoSendDelayCancellationSource.Cancel();
+                if (!this.disposed)
+                {
+                    this.autoSendDelayCancellationSource.Cancel();
+                }
             }
         }
 
