@@ -39,12 +39,28 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
     public static class NodeExtensions
     {
         /// <summary>
-        /// Returns the child parameter <see cref="IParameter"/> of parent <paramref name="node"/> with <paramref name="identifier"/>
+        /// Returns the child parameter <see cref="IParameter"/> of parent <paramref name="node"/> with <paramref name="identifier"/>.
+        /// TODO: This one doesn't use the consumer.SendAsync() to trigger changes on no children, needs to be verified.
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="identifier">String path identifier</param>
+        /// <returns>IParameter or default if not found</returns>
+        public static IParameter GetParameter(this INode node, string identifier)
+        {
+            if (node.Children.Count == 0)
+            {
+                node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
+            }
+            return node.Children.FirstOrDefault(c => c.Identifier == identifier) as IParameter;
+        }
+
+        /// <summary>
+        /// Returns the child parameter <see cref="IParameter"/> of parent <paramref name="node"/> with <paramref name="identifier"/>.
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="identifier">String path identifier</param>
         /// <param name="consumer"></param>
-        /// <returns></returns>
+        /// <returns>IParameter or default if not found</returns>
         public static async Task<IParameter> GetParameter(this INode node, string identifier, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
@@ -56,7 +72,23 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         }
 
         /// <summary>
-        /// Returns the child function <see cref="IFunction"/> of parent <paramref name="node"/> with <paramref name="identifier"/>
+        /// Returns the child function <see cref="IFunction"/> of parent <paramref name="node"/> with <paramref name="identifier"/>.
+        /// TODO: This one doesn't use the consumer.SendAsync() to trigger changes on no children, needs to be verified.
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="identifier">String path identifier</param>
+        /// <returns></returns>
+        public static IFunction GetFunction(this INode node, string identifier)
+        {
+            if (node.Children.Count == 0)
+            {
+                node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
+            }
+            return node.Children.FirstOrDefault(c => c.Identifier == identifier) as IFunction;
+        }
+
+        /// <summary>
+        /// Returns the child function <see cref="IFunction"/> of parent <paramref name="node"/> with <paramref name="identifier"/>.
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="identifier">String path identifier</param>
@@ -73,11 +105,26 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         }
 
         /// <summary>
+        /// Returns all child nodes <see cref="IEnumerable{INode}"/> of parent <paramref name="node"/>.
+        /// TODO: This one doesn't use the consumer.SendAsync() to trigger changes on no children, needs to be verified.
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <returns>list of nodes <see cref="INode"/></returns>
+        public static IEnumerable<INode> ChildNodes(this INode node)
+        {
+            if (node.Children.Count == 0)
+            {
+                node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
+            }
+            return node.Children.OfType<INode>();
+        }
+
+        /// <summary>
         /// Returns all child nodes <see cref="IEnumerable{INode}"/> of parent <paramref name="node"/>
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="consumer"></param>
-        /// <returns></returns>
+        /// <returns>list of nodes <see cref="INode"/></returns>
         public static async Task<IEnumerable<INode>> ChildNodes(this INode node, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
@@ -89,11 +136,26 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         }
 
         /// <summary>
-        /// Returns child parameter <see cref="IParameter"/> nodes of parent <paramref name="node"/>
+        /// Returns child parameter <see cref="IParameter"/> nodes of parent <paramref name="node"/>.
+        /// TODO: This one doesn't use the consumer.SendAsync() to trigger changes on no children, needs to be verified.
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <returns>list of parameter nodes <see cref="IParameter"/></returns>
+        public static IEnumerable<IParameter> ChildParameterNodes(this INode node)
+        {
+            if (node.Children.Count == 0)
+            {
+                node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
+            }
+            return node.Children.OfType<IParameter>();
+        }
+
+        /// <summary>
+        /// Returns child parameter <see cref="IParameter"/> nodes of parent <paramref name="node"/>.
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="consumer"></param>
-        /// <returns></returns>
+        /// <returns>list of parameter nodes <see cref="IParameter"/></returns>
         public static async Task<IEnumerable<IParameter>> ChildParameterNodes(this INode node, Consumer<MyRoot> consumer)
         {
             if (node.Children.Count == 0)
@@ -105,7 +167,23 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         }
 
         /// <summary>
-        /// Get child node <see cref="INode"/> of <paramref name="node"/> with path idenfifier <paramref name="string"/>
+        /// Get child node <see cref="INode"/> of <paramref name="node"/> with path idenfifier <paramref name="string"/>.
+        /// TODO: This one doesn't use the consumer.SendAsync() to trigger changes on no children, needs to be verified.
+        /// </summary>
+        /// <param name="node">Parent node</param>
+        /// <param name="identifier">String path identifier</param>
+        /// <returns>node <see cref="INode"/></returns>
+        public static INode GetChildNode(this INode node, string identifier)
+        {
+            if (node.Children.Count == 0)
+            {
+                node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
+            }
+            return node.Children.OfType<INode>().FirstOrDefault(c => c.Identifier == identifier);
+        }
+
+        /// <summary>
+        /// Get child node <see cref="INode"/> of <paramref name="node"/> with path idenfifier <paramref name="string"/>.
         /// </summary>
         /// <param name="node">Parent node</param>
         /// <param name="identifier">String path identifier</param>
