@@ -28,20 +28,36 @@
  */
 #endregion copyright
 
-using Lawo.EmberPlusSharp.Model;
+using Lawo.EmberPlusSharp.Glow;
+using Lawo.EmberPlusSharp.S101;
+using Microsoft.Extensions.Logging;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 
-namespace EmberPlusConsumerClassLib.Model
+namespace EmberPlusConsumerClassLib.EmberHelpers
 {
-    /// <summary>
-    /// Note that the most-derived subtype MyRoot needs to be passed to the generic base class.
-    /// Represents the root containing dynamic and optional static elements in the object
-    /// tree accessible through Consumer<TRoot>.Root
-    /// 
-    /// Either use this generic <see cref="MyRoot"/> or create a typed one, specific to your
-    /// device.
-    /// </summary>
-    public sealed class MyRoot : DynamicRoot<MyRoot>
+    public static class S101Extension
     {
-        // Root for consumer
+        private static readonly int S101ClientTimeout = 6000;
+        private static readonly int S101ClientBufferSize = 8192;
+
+        public static async Task<S101Client> CreateClient(string host, int port, ILogger logger)
+        {
+            TcpClient tcpClient = new TcpClient();
+            await tcpClient.ConnectAsync(host, port);
+            NetworkStream stream = tcpClient.GetStream();
+
+            S101Logger s101Logger = logger.IsEnabled(LogLevel.Debug) ? new S101Logger(GlowTypes.Instance, new ILoggerTraceWriter(logger)) : null;
+
+            S101Client client = new S101Client(
+                tcpClient,
+                stream.ReadAsync,
+                stream.WriteAsync,
+                s101Logger,
+                S101ClientTimeout,
+                S101ClientBufferSize);
+
+            return client;
+        }
     }
 }

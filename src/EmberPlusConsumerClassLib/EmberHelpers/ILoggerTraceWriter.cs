@@ -28,20 +28,62 @@
  */
 #endregion copyright
 
-using Lawo.EmberPlusSharp.Model;
+using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Text;
 
-namespace EmberPlusConsumerClassLib.Model
+namespace EmberPlusConsumerClassLib.EmberHelpers
 {
     /// <summary>
-    /// Note that the most-derived subtype MyRoot needs to be passed to the generic base class.
-    /// Represents the root containing dynamic and optional static elements in the object
-    /// tree accessible through Consumer<TRoot>.Root
-    /// 
-    /// Either use this generic <see cref="MyRoot"/> or create a typed one, specific to your
-    /// device.
+    /// Helps create a TextWriter instance that logs to <see cref="ILogger"/>.
     /// </summary>
-    public sealed class MyRoot : DynamicRoot<MyRoot>
+    internal class ILoggerTraceWriter : TextWriter
     {
-        // Root for consumer
+        private ILogger _logger;
+
+        public LogLevel LogLevel { get; private set; }
+
+        public ILoggerTraceWriter(ILogger logger, LogLevel logLevel = LogLevel.Debug)
+        {
+            _logger = logger;
+            LogLevel = logLevel;
+        }
+
+        public ILogger Logger { get { return _logger; } }
+
+        public override Encoding Encoding => Encoding.UTF8;
+
+        public override void Write(char[] buffer, int index, int count)
+        {
+            if (_logger == null) {
+                return;
+            }
+
+            Write(buffer.AsSpan(index, count).ToString());
+        }
+
+        public override void Write(string value)
+        {
+            if (_logger == null || value == null)
+            {
+                return;
+            }
+            _logger.Log(LogLevel, value);
+        }
+
+        public override void Write(char value)
+        {
+            return;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (ReferenceEquals(null, _logger)) {
+                return;
+            }
+            base.Dispose(disposing);
+            _logger = null;
+        }
     }
 }

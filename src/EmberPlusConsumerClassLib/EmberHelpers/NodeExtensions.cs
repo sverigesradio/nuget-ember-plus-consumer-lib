@@ -2,7 +2,7 @@
 /*
  * NuGet EmBER+ Consumer Lib
  *
- * Copyright (c) 2021 Roger Sandholm & Fredrik Bergholtz, Stockholm, Sweden
+ * Copyright (c) 2023 Roger Sandholm & Fredrik Bergholtz, Stockholm, Sweden
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -28,6 +28,7 @@
  */
 #endregion copyright
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,13 +46,17 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         /// <param name="node">Parent node</param>
         /// <param name="identifier">String path identifier</param>
         /// <returns>IParameter or default if not found</returns>
-        public static IParameter GetParameter(this INode node, string identifier)
+        public static IParameter GetParameter(this INode node, string identifier, bool compareCaseSensitive = true)
         {
             if (node.Children.Count == 0)
             {
                 node.ChildrenRetrievalPolicy = ChildrenRetrievalPolicy.DirectOnly;
             }
-            return node.Children.FirstOrDefault(c => c.Identifier == identifier) as IParameter;
+            if (compareCaseSensitive)
+            {
+                return node.Children.FirstOrDefault(c => c.Identifier == identifier) as IParameter;
+            }
+            return node.Children.FirstOrDefault(c => c.Identifier?.ToLower() == identifier?.ToLower()) as IParameter;
         }
 
         /// <summary>
