@@ -66,7 +66,7 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         /// <param name="identifier">String path identifier</param>
         /// <param name="consumer"></param>
         /// <returns>IParameter or default if not found</returns>
-        public static async Task<IParameter> GetParameter(this INode node, string identifier, Consumer<MyRoot> consumer)
+        public static async Task<IParameter> GetParameter<TRoot>(this INode node, string identifier, Consumer<TRoot> consumer) where TRoot : Root<TRoot>
         {
             if (node.Children.Count == 0)
             {
@@ -99,7 +99,7 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         /// <param name="identifier">String path identifier</param>
         /// <param name="consumer"></param>
         /// <returns></returns>
-        public static async Task<IFunction> GetFunction(this INode node, string identifier, Consumer<MyRoot> consumer)
+        public static async Task<IFunction> GetFunction<TRoot>(this INode node, string identifier, Consumer<TRoot> consumer) where TRoot : Root<TRoot>
         {
             if (node.Children.Count == 0)
             {
@@ -130,7 +130,7 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         /// <param name="node">Parent node</param>
         /// <param name="consumer"></param>
         /// <returns>list of nodes <see cref="INode"/></returns>
-        public static async Task<IEnumerable<INode>> ChildNodes(this INode node, Consumer<MyRoot> consumer)
+        public static async Task<IEnumerable<INode>> ChildNodes<TRoot>(this INode node, Consumer<TRoot> consumer) where TRoot : Root<TRoot>
         {
             if (node.Children.Count == 0)
             {
@@ -161,7 +161,7 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         /// <param name="node">Parent node</param>
         /// <param name="consumer"></param>
         /// <returns>list of parameter nodes <see cref="IParameter"/></returns>
-        public static async Task<IEnumerable<IParameter>> ChildParameterNodes(this INode node, Consumer<MyRoot> consumer)
+        public static async Task<IEnumerable<IParameter>> ChildParameterNodes<TRoot>(this INode node, Consumer<TRoot> consumer) where TRoot : Root<TRoot>
         {
             if (node.Children.Count == 0)
             {
@@ -194,7 +194,7 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
         /// <param name="identifier">String path identifier</param>
         /// <param name="consumer"></param>
         /// <returns>node <see cref="INode"/></returns>
-        public static async Task<INode> GetChildNode(this INode node, string identifier, Consumer<MyRoot> consumer)
+        public static async Task<INode> GetChildNode<TRoot>(this INode node, string identifier, Consumer<TRoot> consumer) where TRoot : Root<TRoot>
         {
             if (node.Children.Count == 0)
             {
@@ -206,12 +206,36 @@ namespace EmberPlusConsumerClassLib.EmberHelpers
 
         /// <summary>
         /// Navigate from <paramref name="root"/> node to the <paramref name="path"/> node <see cref="INode"/> , the path is split by '/'.
+        /// TODO: This one doesn't use the consumer.SendAsync() to trigger changes on no children, needs to be verified.
         /// </summary>
         /// <param name="root">Root node</param>
         /// <param name="path">Path as string</param>
         /// <param name="consumer"></param>
         /// <returns></returns>
-        public static async Task<INode> NavigateToNode(this INode root, string path, Consumer<MyRoot> consumer)
+        public static INode NavigateToNode(this INode root, string path)
+        {
+            string[] steps = path.Split('/');
+
+            INode node = root;
+            foreach (string identifier in steps)
+            {
+                node = node.GetChildNode(identifier);
+                if (node == null)
+                {
+                    break;
+                }
+            }
+            return node;
+        }
+
+        /// <summary>
+        /// Navigate from <paramref name="root"/> node to the <paramref name="path"/> node <see cref="INode"/> , the path is split by '/'.
+        /// </summary>
+        /// <param name="root">Root node</param>
+        /// <param name="path">Path as string</param>
+        /// <param name="consumer"></param>
+        /// <returns></returns>
+        public static async Task<INode> NavigateToNode<TRoot>(this INode root, string path, Consumer<TRoot> consumer) where TRoot : Root<TRoot>
         {
             string[] steps = path.Split('/');
 
