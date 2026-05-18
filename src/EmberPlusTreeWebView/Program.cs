@@ -12,11 +12,25 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-app.MapGet("/api/tree", async (EmberTreeSnapshotService service, CancellationToken cancellationToken) =>
+app.MapGet("/api/tree", async (
+    EmberTreeSnapshotService service,
+    string? host,
+    int? port,
+    CancellationToken cancellationToken) =>
 {
     try
     {
-        return Results.Ok(await service.GetTreeAsync(cancellationToken));
+        if (string.IsNullOrWhiteSpace(host))
+        {
+            return Results.BadRequest(new { detail = "Query parameter 'host' is required." });
+        }
+
+        if (port is null or < 1 or > 65535)
+        {
+            return Results.BadRequest(new { detail = "Query parameter 'port' must be between 1 and 65535." });
+        }
+
+        return Results.Ok(await service.GetTreeAsync(host, port.Value, cancellationToken));
     }
     catch (Exception exception)
     {

@@ -7,6 +7,8 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 1rem; }
     button { margin-bottom: 1rem; }
+    .controls { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .controls input { padding: 0.2rem 0.4rem; }
     ul { list-style: none; padding-left: 1rem; }
     li { margin: 0.2rem 0; }
     .node { color: #0b57d0; }
@@ -20,13 +22,21 @@
 <body>
   <h1>Ember+ Tree (Read-only)</h1>
   <p>This view is read-only and only displays the current tree snapshot from the Ember+ provider.</p>
-  <button id="reload" type="button">Reload tree</button>
+  <div class="controls">
+    <label for="host">Host</label>
+    <input id="host" type="text" value="localhost" />
+    <label for="port">Port</label>
+    <input id="port" type="number" min="1" max="65535" value="9000" />
+    <button id="reload" type="button">Reload tree</button>
+  </div>
   <div id="status" class="meta"></div>
   <div id="tree"></div>
 
   <script>
     const treeContainer = document.getElementById('tree');
     const statusEl = document.getElementById('status');
+    const hostInput = document.getElementById('host');
+    const portInput = document.getElementById('port');
 
     function getLabelText(element) {
       const identifier = element.identifier || '(no identifier)';
@@ -65,11 +75,26 @@
     }
 
     async function loadTree() {
+      const host = hostInput.value.trim();
+      const port = Number.parseInt(portInput.value, 10);
+
+      if (!host) {
+        statusEl.textContent = 'Host is required';
+        treeContainer.innerHTML = '<div class="error">Please provide a host.</div>';
+        return;
+      }
+
+      if (!Number.isInteger(port) || port < 1 || port > 65535) {
+        statusEl.textContent = 'Port is invalid';
+        treeContainer.innerHTML = '<div class="error">Please provide a valid port (1-65535).</div>';
+        return;
+      }
+
       statusEl.textContent = 'Loading tree...';
       treeContainer.textContent = '';
 
       try {
-        const response = await fetch('/api/tree');
+        const response = await fetch(`/api/tree?host=${encodeURIComponent(host)}&port=${port}`);
         const payload = await response.json();
 
         if (!response.ok) {

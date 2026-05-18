@@ -15,7 +15,10 @@ public sealed class EmberTreeSnapshotService
 
     public EmberTreeSnapshotService(IOptions<EmberPlusConnectionOptions> options) => this.options = options;
 
-    public async Task<EmberElementDto> GetTreeAsync(CancellationToken cancellationToken)
+    public async Task<EmberElementDto> GetTreeAsync(
+        string host,
+        int port,
+        CancellationToken cancellationToken)
     {
         EmberElementDto? root = null;
 
@@ -25,7 +28,7 @@ public sealed class EmberTreeSnapshotService
                 var current = this.options.Value;
 
                 using var tcpClient = new TcpClient();
-                await tcpClient.ConnectAsync(current.Host, current.Port, cancellationToken);
+                await tcpClient.ConnectAsync(host, port, cancellationToken);
 
                 using var networkStream = tcpClient.GetStream();
                 using var s101Client = new S101Client(tcpClient, networkStream.ReadAsync, networkStream.WriteAsync);
