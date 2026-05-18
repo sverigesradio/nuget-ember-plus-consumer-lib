@@ -38,15 +38,16 @@ A library that gives you the possibility to create an EmBER+ consumer.
 ## Read-only web view of the Ember+ tree
 The solution now includes `src/EmberPlusTreeWebView`, a small ASP.NET Core app that exposes the tree as read-only.
 
-1. Configure provider connection in `src/EmberPlusTreeWebView/appsettings.json` under `EmberPlus` (`Host`, `Port`, `TimeoutMilliseconds`).
+1. Configure `TimeoutMilliseconds` in `src/EmberPlusTreeWebView/appsettings.json` under `EmberPlus`.
 2. Run the web app:
    ```bash
    dotnet run --project ./src/EmberPlusTreeWebView/EmberPlusTreeWebView.csproj
    ```
 3. Open the browser URL shown by ASP.NET Core.
-4. Use:
+4. In the web UI (`/`), enter provider `Host` and `Port` and click **Reload tree**.
+5. Use:
    - `/` for the web UI tree browser
-   - `/api/tree` for the JSON tree snapshot endpoint
+   - `/api/tree?host=<host>&port=<port>` for the JSON tree snapshot endpoint
 
 # Solution contains:
 - Lawo - Common shared classes (Required by main library) - .NET Standard 2.1, .NET Framework 4.5, .NET Framework 4.8
