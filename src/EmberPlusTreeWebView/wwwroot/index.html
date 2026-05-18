@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ember+ Tree (Read-only)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 1rem; }
+    button { margin-bottom: 1rem; }
+    ul { list-style: none; padding-left: 1rem; }
+    li { margin: 0.2rem 0; }
+    .node { color: #0b57d0; }
+    .parameter { color: #0b8043; }
+    .function { color: #8e24aa; }
+    .meta { color: #555; font-size: 0.9rem; }
+    .error { color: #b00020; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Ember+ Tree (Read-only)</h1>
+  <p>This view is read-only and only displays the current tree snapshot from the Ember+ provider.</p>
+  <button id="reload" type="button">Reload tree</button>
+  <div id="status" class="meta"></div>
+  <div id="tree"></div>
+
+  <script>
+    const treeContainer = document.getElementById('tree');
+    const statusEl = document.getElementById('status');
+
+    function renderElement(element) {
+      const li = document.createElement('li');
+      li.className = element.kind;
+
+      const label = document.createElement('span');
+      label.textContent = `${element.kind.toUpperCase()} ${element.identifier || '(no identifier)'}`;
+      li.appendChild(label);
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      const parts = [`number=${element.number}`, `online=${element.isOnline}`];
+      if (element.identifierPath) parts.push(`path=${element.identifierPath}`);
+      if (element.parameterType) parts.push(`type=${element.parameterType}`);
+      if (element.value !== null && element.value !== undefined) parts.push(`value=${element.value}`);
+      if (element.isWritable !== null && element.isWritable !== undefined) parts.push(`writable=${element.isWritable}`);
+      meta.textContent = parts.join(', ');
+      li.appendChild(meta);
+
+      if (Array.isArray(element.arguments) && element.arguments.length > 0) {
+        const args = document.createElement('div');
+        args.className = 'meta';
+        args.textContent = `arguments: ${element.arguments.map(x => `${x.name}:${x.type}`).join(', ')}`;
+        li.appendChild(args);
+      }
+
+      if (Array.isArray(element.result) && element.result.length > 0) {
+        const result = document.createElement('div');
+        result.className = 'meta';
+        result.textContent = `result: ${element.result.map(x => `${x.name}:${x.type}`).join(', ')}`;
+        li.appendChild(result);
+      }
+
+      if (Array.isArray(element.children) && element.children.length > 0) {
+        const ul = document.createElement('ul');
+        for (const child of element.children) {
+          ul.appendChild(renderElement(child));
+        }
+        li.appendChild(ul);
+      }
+
+      return li;
+    }
+
+    async function loadTree() {
+      statusEl.textContent = 'Loading tree...';
+      treeContainer.textContent = '';
+
+      try {
+        const response = await fetch('/api/tree');
+        const payload = await response.json();
+
+        if (!response.ok) {
+          throw new Error(payload.detail || `Request failed with status ${response.status}`);
+        }
+
+        const ul = document.createElement('ul');
+        ul.appendChild(renderElement(payload));
+        treeContainer.appendChild(ul);
+        statusEl.textContent = `Loaded at ${new Date().toLocaleTimeString()}`;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        treeContainer.innerHTML = `<div class="error">${message}</div>`;
+        statusEl.textContent = 'Failed to load tree';
+      }
+    }
+
+    document.getElementById('reload').addEventListener('click', loadTree);
+    loadTree();
+  </script>
+</body>
+</html>

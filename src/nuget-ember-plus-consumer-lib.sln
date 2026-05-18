@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ember-plus", "ember-plus", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmberPlusConsumerClassLib", "EmberPlusConsumerClassLib\EmberPlusConsumerClassLib.csproj", "{402C4B73-F8BD-4806-9A03-5AD21CCFF365}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmberPlusTreeWebView", "EmberPlusTreeWebView\EmberPlusTreeWebView.csproj", "{DA45A716-ACEA-48AC-8772-05A03583BDE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -262,6 +264,30 @@ Global
 		{402C4B73-F8BD-4806-9A03-5AD21CCFF365}.Release|x64.Build.0 = Release|Any CPU
 		{402C4B73-F8BD-4806-9A03-5AD21CCFF365}.Release|x86.ActiveCfg = Release|Any CPU
 		{402C4B73-F8BD-4806-9A03-5AD21CCFF365}.Release|x86.Build.0 = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|x64.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|Any CPU.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|ARM.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|ARM.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|x64.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|x64.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|x86.ActiveCfg = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.PackNuGet|x86.Build.0 = Debug|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|ARM.Build.0 = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|x64.Build.0 = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA45A716-ACEA-48AC-8772-05A03583BDE0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
