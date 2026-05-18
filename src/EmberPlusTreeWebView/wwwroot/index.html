@@ -12,6 +12,7 @@
     .node { color: #0b57d0; }
     .parameter { color: #0b8043; }
     .function { color: #8e24aa; }
+    summary { cursor: pointer; user-select: none; }
     .meta { color: #555; font-size: 0.9rem; }
     .error { color: #b00020; white-space: pre-wrap; }
   </style>
@@ -31,40 +32,24 @@
       const li = document.createElement('li');
       li.className = element.kind;
 
-      const label = document.createElement('span');
-      label.textContent = `${element.kind.toUpperCase()} ${element.identifier || '(no identifier)'}`;
-      li.appendChild(label);
-
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      const parts = [`number=${element.number}`, `online=${element.isOnline}`];
-      if (element.identifierPath) parts.push(`path=${element.identifierPath}`);
-      if (element.parameterType) parts.push(`type=${element.parameterType}`);
-      if (element.value !== null && element.value !== undefined) parts.push(`value=${element.value}`);
-      if (element.isWritable !== null && element.isWritable !== undefined) parts.push(`writable=${element.isWritable}`);
-      meta.textContent = parts.join(', ');
-      li.appendChild(meta);
-
-      if (Array.isArray(element.arguments) && element.arguments.length > 0) {
-        const args = document.createElement('div');
-        args.className = 'meta';
-        args.textContent = `arguments: ${element.arguments.map(x => `${x.name}:${x.type}`).join(', ')}`;
-        li.appendChild(args);
-      }
-
-      if (Array.isArray(element.result) && element.result.length > 0) {
-        const result = document.createElement('div');
-        result.className = 'meta';
-        result.textContent = `result: ${element.result.map(x => `${x.name}:${x.type}`).join(', ')}`;
-        li.appendChild(result);
-      }
+      const labelText = element.identifier || '(no identifier)';
 
       if (Array.isArray(element.children) && element.children.length > 0) {
+        const details = document.createElement('details');
+        const summary = document.createElement('summary');
+        summary.textContent = labelText;
+        details.appendChild(summary);
+
         const ul = document.createElement('ul');
         for (const child of element.children) {
           ul.appendChild(renderElement(child));
         }
-        li.appendChild(ul);
+        details.appendChild(ul);
+        li.appendChild(details);
+      } else {
+        const label = document.createElement('span');
+        label.textContent = labelText;
+        li.appendChild(label);
       }
 
       return li;
