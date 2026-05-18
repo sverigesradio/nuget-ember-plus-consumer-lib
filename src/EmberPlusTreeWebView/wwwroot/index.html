@@ -28,11 +28,20 @@
     const treeContainer = document.getElementById('tree');
     const statusEl = document.getElementById('status');
 
+    function getLabelText(element) {
+      const identifier = element.identifier || '(no identifier)';
+      const isParameter = typeof element.kind === 'string' && element.kind.toLowerCase() === 'parameter';
+      if (isParameter && element.value !== null && element.value !== undefined) {
+        return `${identifier}: ${element.value}`;
+      }
+      return identifier;
+    }
+
     function renderElement(element) {
       const li = document.createElement('li');
       li.className = element.kind;
 
-      const labelText = element.identifier || '(no identifier)';
+      const labelText = getLabelText(element);
 
       if (Array.isArray(element.children) && element.children.length > 0) {
         const details = document.createElement('details');
