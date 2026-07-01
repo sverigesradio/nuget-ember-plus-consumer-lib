@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "nuget-ember-plus-consumer-lib"
+  title: "EmberPlus consumer"
+  description: "Bibliotek i dotnet för att prata ember+"
+  annotations:
+    frekvens.sverigesradio.se/from-template: frekvens-create-catalog-info
+spec:
+  type: service
+  owner: group:default/mixersystem
+  system: nuget-ember-plus-consumer-lib
+  lifecycle: production
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: nuget-ember-plus-consumer-lib
+  title: EmberPlus consumer
+  description: Bibliotek i dotnet för att prata ember+
+spec:
+  type: service
+  owner: group:default/mixersystem
