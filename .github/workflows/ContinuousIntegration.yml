@@ -9,9 +9,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@871f041373faaad213a635d9afb62905ec029bbb # v1.10.1
       with:
         dotnet-version: 3.1.101
         source-url: https://nuget.pkg.github.com/sverigesradio/index.json
@@ -23,7 +23,7 @@ jobs:
       working-directory: ./src/
 
     - name: Upload NuGet Package
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@3446296876d12d4e3a0f3145a3c87e67bf0a16b5 # v1.0.0
       with:
         name: SR.EmberPlusConsumerLib.NetStandard
         path: ./src/Nuget.EmberPlusConsumerLib.NetStandard/bin/PackNuGet/SR.EmberPlusConsumerLib.NetStandard.${{ github.event.release.tag_name }}.nupkg
